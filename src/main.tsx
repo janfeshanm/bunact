@@ -1,4 +1,4 @@
-import { h, Fragment, signal, computed, effect, render, Show, For, type Getter, type Setter } from "./bunact.tsx";
+import { h, Fragment, signal, computed, effect, render, Show, For, type Getter, type Setter } from "./bunact.ts";
 
 function Counter() {
   const [count, setCount] = signal(0);

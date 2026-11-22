@@ -2,8 +2,9 @@
 
 A tiny TSX framework where [Bun](https://bun.sh) does everything: running TypeScript, serving, bundling, and hot reload.
 
-- The framework is one file: [`src/bunact.tsx`](src/bunact.tsx).
+- The framework is one file: [`src/bunact.ts`](src/bunact.ts).
 - The only dependency is `@types/bun` (dev only). React is not used; TSX compiles to bunact's own `h()`.
+- Architecture and data-flow diagrams: [`docs/architecture.md`](docs/architecture.md).
 
 ## Scripts
 
@@ -18,7 +19,7 @@ bun run typecheck  # tsc via bunx (not a project dependency)
 ## API
 
 ```tsx
-import { h, Fragment, signal, computed, effect, batch, render, Show, For } from "./bunact.tsx";
+import { h, Fragment, signal, computed, effect, batch, render, Show, For } from "./bunact.ts";
 
 function Counter() {
   const [count, setCount] = signal(0);          // reactive value

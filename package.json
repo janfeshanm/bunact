@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "module": "src/bunact.tsx",
+  "module": "src/bunact.ts",
   "scripts": {
     "dev": "bun --hot server.ts",
     "build": "bun build ./src/index.html --outdir dist --minify",

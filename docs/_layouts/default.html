@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+    <style>
+      :root { --bg: #ffffff; --fg: #1f2328; --muted: #59636e; --border: #d1d9e0; --code: #f6f8fa; --link: #0969da; }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #0d1117; --fg: #e6edf3; --muted: #9198a1; --border: #3d444d; --code: #151b23; --link: #4493f8; }
+      }
+      body { background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; margin: 0; }
+      main { max-width: 60rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+      nav { border-bottom: 1px solid var(--border); padding: 0.75rem 1rem; display: flex; gap: 1rem; }
+      a { color: var(--link); }
+      h1, h2, h3 { line-height: 1.25; }
+      h2 { border-bottom: 1px solid var(--border); padding-bottom: 0.3em; margin-top: 2.5rem; }
+      code { background: var(--code); padding: 0.15em 0.35em; border-radius: 4px; font-size: 0.9em; }
+      pre { background: var(--code); padding: 1rem; border-radius: 6px; overflow-x: auto; }
+      pre code { background: none; padding: 0; }
+      table { border-collapse: collapse; display: block; overflow-x: auto; margin: 1rem 0; }
+      th, td { border: 1px solid var(--border); padding: 0.4rem 0.75rem; text-align: left; vertical-align: top; }
+      .mermaid { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 1rem; overflow-x: auto; text-align: center; margin: 1rem 0; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="{{ '/' | relative_url }}"><strong>{{ site.title }}</strong></a>
+      <a href="{{ '/architecture.html' | relative_url }}">Architecture</a>
+    </nav>
+    <main>{{ content }}</main>
+    <script type="module">
+      // kramdown renders ```mermaid fences as highlighted code; turn them into mermaid diagrams.
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs";
+      for (const code of document.querySelectorAll("code.language-mermaid, .language-mermaid code")) {
+        const block = code.closest("div.language-mermaid") ?? code.closest("pre") ?? code;
+        const div = document.createElement("div");
+        div.className = "mermaid";
+        div.textContent = code.textContent;
+        block.replaceWith(div);
+      }
+      mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "strict" });
+      await mermaid.run({ querySelector: ".mermaid" });
+    </script>
+  </body>
+</html>

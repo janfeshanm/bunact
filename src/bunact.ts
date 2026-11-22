@@ -1,5 +1,5 @@
 /**
- * bunact — a tiny, single-file TSX framework with signal-based reactivity.
+ * bunact — a tiny, single-file TypeScript framework (used from TSX) with signal-based reactivity.
  *
  * - Reactivity: signal / computed / effect / batch / untrack / root / onCleanup
  * - Rendering:  h / Fragment / render / Show / For  (real DOM, no virtual DOM)

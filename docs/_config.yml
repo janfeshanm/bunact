@@ -1,0 +1,10 @@
+title: bunact
+description: A tiny Bun-powered TypeScript framework with signal-based reactivity
+markdown: kramdown
+kramdown:
+  input: GFM
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: false
